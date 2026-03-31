@@ -90,3 +90,10 @@ This is the place for you to write reflections:
 
 3. Postman merupakan alat yang sangat esensial dalam pengembangan API karena memungkinkan pengujian fungsionalitas backend secara mandiri tanpa harus menunggu kesiapan sisi frontend.
 #### Reflection Publisher-3
+1. kita menggunakan variasi Push model. Hal ini terlihat dari metode update pada Subscriber dan metode notify pada NotificationService. Ketika terjadi perubahan status pada produk Publisher akan membungkus semua detail data tersebut ke dalam objek Notification dan langsung dipush ke setiap Subscribe
+
+2. Jika sistem ini diubah menggunakan Pull model 
+- Kelebihan: Model lebih efisien dalam penggunaan bandwidth dan memori jika Subscriber hanya peduli pada sebagian kecil data, atau jika Subscriber sedang sibuk dan lebih memilih untuk mengambil data nanti saat mereka siap. Subscriber memegang kendali penuh atas kapan dan apa yang ingin mereka ambil.
+- Kekurangan: Akan terjadi peningkatan latensi dan beban jaringan. Sistem harus melakukan dua kali perjalanan: pertama, Publisher mengirimkan sinyal notifikasi, lalu kedua, Subscriber membalas dengan HTTP GET request ke Publisher untuk mengambil data spesifiknya. Jika jumlah subscriber sangat banyak dan mereka semua "menarik" data secara bersamaan server BambangShop bisa mengalami kelebihan beban.
+
+3. program akan berjalan secara synchronous. Proses thread utama akan terblokir setiap kali mengirim notifikasi ke satu Subscriber dan harus menunggu hingga HTTP request tersebut selesai atau timeout sebelum bisa lanjut mengirim ke Subscriber berikutnya. Akhirnya waktu respons dari endpoint produk akan menjadi sangat lambat.
