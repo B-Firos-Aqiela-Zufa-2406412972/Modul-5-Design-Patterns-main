@@ -84,4 +84,9 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-2
 
+1. Pemisahan antara Service, Repository, dan Model bertujuan untuk menerapkan prinsip Single Responsibility Principle. Dengan pemisahan ini, Model hanya berfungsi sebagai representasi data, sementara Repository bertanggung jawab penuh atas logika akses dan penyimpanan data. Di sisi lain, Service berperan untuk mengelola logika bisnis dan mengoordinasikan interaksi antar komponen.
+
+2. Jika seluruh logika bisnis dan penyimpanan digabungkan langsung ke dalam Model, maka akan terjadi tingkat ketergantungan yang sangat tinggi. Model Subscriber tidak hanya akan menyimpan data, tetapi juga harus memahami cara mengelola dirinya sendiri dalam, sementara model Notification akan terbebani dengan detail pengiriman dan pengambilan data subscriber. Keterikatan antar model ini membuat kode sulit untuk dimodifikasi karena perubahan kecil pada satu bagian dapat merusak logika di bagian lain, sehingga sistem menjadi sulit untuk dikembangkan.
+
+3. Postman merupakan alat yang sangat esensial dalam pengembangan API karena memungkinkan pengujian fungsionalitas backend secara mandiri tanpa harus menunggu kesiapan sisi frontend.
 #### Reflection Publisher-3
