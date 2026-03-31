@@ -78,6 +78,10 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-1
 
+1. jika semua subscriber memiliki perilaku yang sama, maka sebuah Model struct tunggal sudah cukup. Namun, jika ke kita ingin menggunakan berbagai macam subscriber, maka penggunaan trait menjadi penting agar sistem tetap decoupled dan fleksibel.
+2. Map secara alami menjamin bahwa satu kunci hanya merujuk pada satu nilai. Jika menggunakan Vec kita harus melakukan pengecekan manual setiap kali menambah data agar tidak ada duplikasi. 
+3. meskipun kita menggunakan pola Singleton untuk menyimpan daftar subscriber, kita tetap membutuhkan DashMap. Hal ini dikarenakan compiler Rust tidak akan mengizinkan kita mengubah variabel statis dari banyak thread secara bersamaan tanpa pembungkus yang aman secara thread.
+
 #### Reflection Publisher-2
 
 #### Reflection Publisher-3
